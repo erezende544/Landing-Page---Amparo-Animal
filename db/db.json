@@ -1,0 +1,182 @@
+{
+  "usuarios": [
+    {
+      "id": "201",
+      "nome": "João Silva",
+      "email": "joao.silva@email.com",
+      "senha": "senha123",
+      "telefone": "(11) 91234-5678",
+      "endereco": "Av. Paulista, 1000, São Paulo, SP"
+    }
+  ],
+  "apadrinhamentos": [
+    {
+      "id": "1",
+      "usuarioId": 3,
+      "animalId": 2,
+      "planoId": 2,
+      "metodoPagamentoId": 1,
+      "dataInicio": "2025-10-01",
+      "status": "ATIVO"
+    }
+  ],
+  "cartoesCadastrados": [
+    {
+      "id": "1",
+      "usuarioId": 101,
+      "alias": "Visa Pessoal",
+      "numeroCartao": "1234 5678 9012 3456",
+      "nomeTitular": "ANA C SILVA",
+      "validade": "12/28",
+      "cvv": "123"
+    }
+  ],
+  "planos": [
+    {
+      "id": "1",
+      "nome": "Plano Bronze",
+      "valor": 35,
+      "descricao": "Ajuda a cobrir a alimentação",
+      "vantagens": [
+        "Contribui para ração mensal",
+        "Ajuda na manutenção do abrigo",
+        "Receba atualizações periódicas"
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Plano Prata",
+      "valor": 60,
+      "descricao": "Contribui para alimentação e cuidados básicos de saúde",
+      "vantagens": [
+        "Cobre parte da ração e vacinas anuais",
+        "Ajuda com produtos de higiene e vermífugos",
+        "Receba fotos e notícias mensais"
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Plano Ouro",
+      "valor": 110,
+      "descricao": "Garante alimentação e cuidados completos",
+      "vantagens": [
+        "Cobre ração, vacinas e vermífugos",
+        "Ajuda em consultas veterinárias básicas",
+        "Receba fotos, vídeos e relatórios sobre o bem-estar do animal"
+      ]
+    }
+  ],
+  "animais": [
+    {
+      "id": "1",
+      "nome": "Mel",
+      "idade": "Filhote",
+      "especie": "Cachorro",
+      "raca": "Vira-lata",
+      "sexo": "Fêmea",
+      "foto": "https://res.cloudinary.com/dw5enojvx/image/upload/v1763304967/8600395_q3tln6.jpg",
+      "empresasId": 1,
+      "descricao": "Filhote dócil,gosta de brincar."
+    }
+  ],
+  "empresas": [
+    {
+      "id": "1",
+      "cnpj": "00.000.000/0001-00",
+      "razaoSocial": "Empresa Exemplo",
+      "nomeFantasia": "Exemplo Ltda",
+      "inscricaoEstadual": "123456789",
+      "inscricaoMunicipal": "987654321",
+      "endereco": "Rua Exemplo, 123",
+      "contato": "(11) 1234-5678",
+      "email": "exemplo@gmail.com"
+    }
+  ],
+  "itens": [
+    {
+      "id": "1",
+      "usuarioId": 1,
+      "usuario": "José",
+      "nome": "cama-cachorro",
+      "tempoUso": "6 meses",
+      "tipoAnimal": "cachorro",
+      "porte": "medio",
+      "fotoItem": "https://res.cloudinary.com/dw5enojvx/image/upload/v1763307361/adoravel-cachorrinho-branco_vwttuy.jpg",
+      "descricao": "cama de cachorro com 6 meses de uso, em ótimo estado para cães de médio porte",
+      "dataCriacao": "2025-09-21"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "usuario": "Ana Silva",
+      "fotoUsuario": "https://images.pexels.com/photos/2090658/pexels-photo-2090658.jpeg",
+      "titulo": "Minha experiência com a adoção da Mel",
+      "conteudo": "Conheci a Mel através do site e foi amor à primeira vista! O processo de adoção foi rápido e muito organizado. Hoje ela é parte da família!",
+      "fotoPost": "https://res.cloudinary.com/dw5enojvx/image/upload/v1763304921/garota-sorridente-em-close-olhando-para-o-cachorro_pv3iez.jpg",
+      "dataCriacao": "2025-10-20"
+    }
+  ],
+  "noticias": [
+    {
+      "id": "1",
+      "titulo": "Veterinários Alertam: Os Perigos Escondidos dos Petiscos 'Naturais'",
+      "imagemUrl": "https://images.pexels.com/photos/1633522/pexels-photo-1633522.jpeg?_gl=1*mw8l2i*_ga*NjAwMTEzMDc2LjE3NTk2OTI1OTQ.*_ga_8JE65Q40S6*czE3NjEzOTg2MzUkbzMkZzEkdDE3NjEzOTg3MTYkajUzJGwwJGgw",
+      "descricaoCurta": "Uma nova pesquisa revela que alguns petiscos comercializados como \"naturais\" ou \"orgânicos\" podem conter altos níveis de conservantes e aditivos prejudiciais à saúde canina.",
+      "noticiaCompleta": "Cuidado com o que você dá ao seu melhor amigo! Um estudo recente realizado pela Associação Brasileira de Veterinária expôs uma realidade preocupante: muitos petiscos rotulados como \"naturais\" escondem componentes que podem ser nocivos para os cães.\nA pesquisa analisou mais de 50 marcas diferentes de petiscos disponíveis no mercado e descobriu que 40% deles continham níveis elevados de conservantes químicos, corantes artificiais e aditivos que não eram claramente declarados nos rótulos.\nO que observar nos rótulos:\n•\tEvite produtos com BHA, BHT e etoxiquina\n•\tFique atento a \"subprodutos de carne\" não especificados\n•\tPrefira petiscos com lista curta e compreensível de ingredientes\nAlternativas seguras:\n•\tFrutas como maçã e banana (sem sementes)\n•\tLegumes cozidos como cenoura e batata-doce\n•\tPetiscos caseiros de receitas confiáveis\n\"Os tutores devem ser tão cuidadosos ao escolher petiscos para seus cães quanto são ao escolher sua própria comida\", alerta Dra. Mariana Silva, veterinária especializada em nutrição animal. \"O termo 'natural' nem sempre significa saudável.\"\nA especialista recomenda sempre consultar o veterinário antes de introduzir novos petiscos na dieta do animal e observar possíveis reações alérgicas ou mudanças no comportamento.\n\n",
+      "status": "Rascunho",
+      "visualizacoes": "32",
+      "dataCriacao": "25/10/2025"
+    },
+    {
+      "titulo": "Não é Birra! Entenda a Ciência Por Trás do 'Olhar de Culpa' do Seu Cão",
+      "imagemUrl": "https://images.pexels.com/photos/33145688/pexels-photo-33145688.jpeg",
+      "descricaoCurta": "Estudos comportamentais revelam que a expressão que interpretamos como \"culpa\" pode ser, na verdade, uma resposta ao nosso próprio comportamento.",
+      "noticiaCompleta": "Aqueles olhos pidões, a cabeça baixa e o rabo entre as pernas - todos reconhecemos o \"olhar de culpa\" do cachorro depois de uma travessura. Mas a ciência tem uma revelação surpreendente: os cães podem não sentir culpa como nós entendemos.\n\nO estudo:\nPesquisadores da Universidade de Kyoto observaram que cães tendem a mostrar essa expressão específica não quando cometem uma ação \"errada\", mas quando percebem a desaprovação de seus tutores. Em outras palavras, eles respondem à nossa linguagem corporal e tom de voz, não necessariamente à consciência de ter feito algo proibido.\n\nO que realmente acontece:\n•\tO cão associa certos comportamentos humanos (voz alterada, postura rígida) com consequências negativas\n•\tA expressão é uma tentativa de apaziguamento, não uma admissão de culpa\n•\tAnimais mostram essa expressão mesmo quando não fizeram nada wrong\n\n\"É importante não punir o cão quando ele mostra esse comportamento\", explica o Dr. Takashi Mori, líder do estudo. \"Isso pode criar ansiedade e confusão, já que o animal não conecta necessariamente a punição com a ação específica.\"",
+      "status": "Rascunho",
+      "visualizacoes": "1",
+      "dataCriacao": "25/10/2025",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "titulo": "Ansiedade de Separação Pós-Pandemia: Saiba Como Ajudar seu Cão a Se Readaptar",
+      "imagemUrl": "https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?_gl=1*13z7wk8*_ga*NjAwMTEzMDc2LjE3NTk2OTI1OTQ.*_ga_8JE65Q40S6*czE3NjE0MDM0OTckbzQkZzEkdDE3NjE0MDM2MjIkajU1JGwwJGgw",
+      "descricaoCurta": "Com o retorno presencial ao trabalho, muitos cães desenvolvem comportamentos destrutivos e ansiosos. Especialistas explicam como facilitar essa transição.",
+      "noticiaCompleta": "A pandemia nos deixou um legado inesperado: cães acostumados com a presença constante de seus tutores. Agora, com o retorno às rotinas presenciais, clínicas veterinárias reportam um aumento de 60% em casos de ansiedade de separação.\n\nSinais de alerta:\n•\tLatidos excessivos quando sozinho\n•\tComportamentos destrutivos (morder móveis, portas)\n•\tFazer necessidades em locais inadequados\n•\tLambedura compulsiva das patas\n\nEstratégias de adaptação:\n•\tComece com ausências curtas (5-10 minutos) e aumente gradualmente\n•\tCrie um ambiente seguro e confortável (cama, brinquedos)\n•\tUse enriquecimento ambiental (brinquedos interativos com comida)\n•\tEvite dramas na saída e chegada - mantenha a calma\n•\tConsidere ajuda profissional se os sintomas persistirem\n\n\"O segredo está na dessensibilização gradual\", recomenda a comportamentalista canina Ana Costa. \"Não devemos voltar ao trabalho de um dia para o outro e deixar o cão sozinho por 8 horas direto.\"",
+      "status": "Rascunho",
+      "visualizacoes": "0",
+      "dataCriacao": "25/10/2025"
+    },
+    {
+      "id": "4",
+      "titulo": "Pastor Alemão: Guia Completo de Cuidados para Esta Raça Leal e Inteligente",
+      "imagemUrl": "https://images.pexels.com/photos/1959052/pexels-photo-1959052.jpeg",
+      "descricaoCurta": "Conheça os cuidados específicos de saúde, exercício e nutrição necessários para manter seu Pastor Alemão saudável e feliz por muitos anos.",
+      "noticiaCompleta": "O Pastor Alemão é uma das raças mais populares e versáteis do mundo, conhecida por sua lealdade, inteligência e capacidade de trabalho. No entanto, essa raça requer cuidados específicos para prevenir problemas comuns.\n\nCuidados Essenciais:\n•\tExercício: Necessitam de pelo menos 2 horas de atividade física diária\n•\tAlimentação: Rações específicas para raças grandes para evitar problemas ósseos\n•\tTreinamento: Excelente capacidade de aprendizado, respondem bem ao reforço positivo\nSaúde Preventiva:\n•\tDisplasia coxofemoral - exames regulares a partir dos 12 meses\n•\tProblemas digestivos - alimentação em porções controladas\n•\tDermatites - escovação regular da dupla pelagem\n\"O Pastor Alemão é um cão de trabalho que precisa de estímulo físico e mental constante\", explica o veterinário Dr. Carlos Albuquerque. \"Sem isso, podem desenvolver comportamentos destrutivos por tédio.\"",
+      "status": "Rascunho",
+      "visualizacoes": "0",
+      "dataCriacao": "25/10/2025"
+    },
+    {
+      "id": "5",
+      "titulo": "Top 5 Brinquedos Inteligentes para Entreter Seu Cão Quando Está Sozinho",
+      "imagemUrl": "https://images.pexels.com/photos/128817/pexels-photo-128817.jpeg",
+      "descricaoCurta": "Descubra os melhores brinquedos interativos que mantêm seu cão mentalmente estimulado e previnem a ansiedade de separação.",
+      "noticiaCompleta": "Manter seu cão entretido quando está sozinho é essencial para seu bem-estar mental e para a preservação da sua casa! Conheça os brinquedos mais eficazes:\n\n1. Kong Classic - O Clássico Atemporal\n•\tPreencha com petiscos e pasta de amendoim (sem açúcar)\n•\tDurabilidade excelente para mordedores vigorosos\n•\tDisponível em vários tamanhos\n\n2. Quebra-Cabeça Nina Ottosson\n•\tNíveis de dificuldade progressivos\n•\tEstimula o raciocínio lógico\n•\tPerfeito para cães inteligentes e curiosos\n\n3. Bola Dispensadora de Petiscos\n•\tCombine exercício físico e mental\n•\tRegulável para diferentes tamanhos de petiscos\n•\tGrande sucesso entre retrievers\n\nDica importante: Rotacione os brinquedos semanalmente para manter o interesse do seu cão!",
+      "status": "Rascunho",
+      "visualizacoes": "0",
+      "dataCriacao": "25/10/2025"
+    },
+    {
+      "id": "6",
+      "titulo": "Alimentos Proibidos: 10 Itens da Sua Cozinha que Podem Intoxicar Seu Cão",
+      "imagemUrl": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
+      "descricaoCurta": "Muitos alimentos comuns em nossas casas representam perigo real para os cães. Conheça a lista completa do que evitar.",
+      "noticiaCompleta": "ALERTA DE SAÚDE CANINA\nAlguns alimentos que consumimos regularmente podem ser tóxicos e até fatais para nossos amigos de quatro patas.\n\nLista de Alimentos Perigosos:\n1.\tChocolate - Teobromina pode causar convulsões\n2.\tUvas e uvas-passas - Insuficiência renal aguda\n3.\tCebola e alho - Anemia hemolítica\n4.\tCafé - Estimulante cardíaco perigoso\n5.\tAbacate - Persina causa problemas digestivos\n6.\tNoz-macadâmia - Toxina desconhecida afeta sistema nervoso\n7.\tXilitol (adoçante) - Insuficiência hepática\n8.\tOssos cozidos - Estilhaçam e perfuram intestinos\n9.\tÁlcool - Intoxicação grave\n10.\tMassas cruas - Fermentação no estômago\n\n\"Sinais de intoxicação incluem vômitos, diarréia, tremores e dificuldade respiratória\", alerta a veterinária Dra. Fernanda Costa. \"Em caso de suspeita, procure atendimento imediatamente.\"\n\n",
+      "status": "Rascunho",
+      "visualizacoes": "0",
+      "dataCriacao": "25/10/2025"
+    }
+  ]
+}
