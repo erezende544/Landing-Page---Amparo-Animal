@@ -1,6 +1,6 @@
 # 🐾 Amparo Animal
 
-Plataforma web para gestão de ONGs de proteção animal, desenvolvida com HTML, CSS, JavaScript e JSON Server.
+Foi adicionado uma landing page e foi adicionado o botão ver noticia para exibir a noticia completa
 
 ## ✨ Funcionalidades
 
