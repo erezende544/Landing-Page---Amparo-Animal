@@ -1,0 +1,64 @@
+* Card de Informação do Usuário */ .profile-header-card {
+  background-color: var(--card);
+}
+
+.profile-icon {
+  font-size: 4rem; /* Tamanho grande para o ícone de pessoa */
+  line-height: 1;
+  color: var(--primary);
+}
+
+/* Abas */
+.nav-tabs .nav-link {
+  font-weight: 600;
+  color: var(--muted-foreground);
+  border-color: transparent;
+  border-bottom: 3px solid transparent;
+  border: none;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--primary);
+  background-color: transparent;
+  border-color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: var(--border);
+}
+
+.tab-content {
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Card de Animal Apadrinhado */
+.animal-card {
+  width: 200px; /* Largura fixa para os cards */
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.animal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.animal-card img {
+  height: 180px;
+  object-fit: cover;
+}
+.animal-card .card-body {
+  padding: 1rem;
+}
+
+/* Placeholders das abas "Em Breve" */
+.placeholder-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  padding: 2rem;
+}

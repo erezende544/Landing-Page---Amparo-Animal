@@ -1,112 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notícia Completa | Amparo Animal</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+    <title>Notícia - Amparo Animal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/estilo-noticias.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/estilo-noticias.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="max-width-1280 mx-auto d-flex align-items-center flex-grow-1 px-3 px-md-5 flex-wrap">
-            <a class="navbar-brand me-auto" href="landing page.html">Amparo Animal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="noticia.html">Notícias</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="landing page.html#doacoes">Doação de itens de Pet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="landing page.html#comunidade">Postagens de adotantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Administração de ONGs</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <button class="btn btn-outline-primary me-2" id="btn-login">Entrar</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-primary" id="btn-cadastrar">Cadastrar</button>
-                    </li>
-                </ul>
+    <div id="header-placeholder"></div>
+    <div class="d-flex flex-column">
+        <main class="flex-grow-1 p-3 max-width-1280 mx-auto container py-4">
+            <!-- Cabeçalho com botão de voltar -->
+            <div class="d-flex align-items-center mb-4">
+                <a href="noticia.html" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+                    <i class="bi bi-arrow-left"></i>
+                    <span>Voltar para Notícias</span>
+                </a>
             </div>
-        </div>
-    </nav>
 
-    <main class="container py-4">
-        <div class="text-center mb-4">
-            <a href="noticia.html" class="botao-secundario"
-                style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
-                <i class="bi bi-arrow-left"></i> Voltar para Notícias
-            </a>
-        </div>
+            <!-- Card principal da notícia -->
+            <div class="card border-0 shadow-sm">
+                <!-- Imagem em destaque -->
+                <div id="noticia-imagem-container" class="card-img-top-container">
+                    <img id="noticia-imagem" src="" alt="" class="card-img-top noticia-imagem-destaque">
+                    <div class="card-img-overlay d-flex align-items-start justify-content-between p-4">
+                        <!-- Badge de status (APENAS para admin) -->
+                        <div class="badge-status admin-info">
+                            <span id="noticia-status" class="badge bg-light text-dark"></span>
+                        </div>
 
-        <div class="cartao">
-            <!-- Cabeçalho da Notícia -->
-            <div class="text-center mb-4">
-                <h1 id="noticia-titulo" class="fw-bold">Carregando...</h1>
-                <div class="d-flex justify-content-center gap-3 text-muted mt-3">
-                    <span id="noticia-data">--</span>
-                    <span>•</span>
-                    <span id="noticia-visualizacoes">0 visualizações</span>
-                    <span>•</span>
-                    <span id="noticia-status">--</span>
+                        <!-- Informações da notícia (APENAS para admin) -->
+                        <div class="noticia-metadata text-white admin-info">
+                            <small>
+                                <i class="bi bi-calendar me-1"></i>
+                                <span id="noticia-data"></span>
+                            </small>
+                            <small class="ms-3">
+                                <i class="bi bi-eye me-1"></i>
+                                <span id="noticia-visualizacoes"></span>
+                            </small>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Imagem Principal -->
-            <div class="text-center mb-4">
-                <img id="noticia-imagem" src="" alt="" class="img-fluid rounded"
-                    style="max-height: 400px; object-fit: cover; display: none;" onerror="this.style.display='none'">
-            </div>
+                <!-- Conteúdo da notícia -->
+                <div class="card-body p-4">
+                    <!-- Título -->
+                    <h1 id="noticia-titulo" class="card-title h2 fw-bold text-center mb-3"></h1>
 
-            <!-- Descrição Curta -->
-            <div class="mb-4">
-                <p id="noticia-descricao" class="lead text-center">Carregando...</p>
-            </div>
+                    <!-- Descrição curta -->
+                    <p id="noticia-descricao" class="card-text lead text-center text-muted mb-4"></p>
 
-            <!-- Conteúdo Completo -->
-            <div class="conteudo-noticia">
-                <div id="noticia-conteudo" style="white-space: pre-line; line-height: 1.7; font-size: 1.1rem;">
-                    Carregando...</div>
-            </div>
+                    <!-- Conteúdo completo -->
+                    <div class="conteudo-noticia mt-4">
+                        <div id="noticia-conteudo" class="noticia-conteudo-completo"></div>
+                    </div>
 
-            <!-- Rodapé da Notícia -->
-            <div class="border-top pt-4 mt-4 text-center">
-                <div class="d-flex justify-content-center gap-4 text-muted">
-                    <small>Compartilhar:</small>
-                    <div>
-                        <button class="botao-de-acao" onclick="compartilhar('facebook')">
-                            <i class="bi bi-facebook"></i>
-                        </button>
-                        <button class="botao-de-acao" onclick="compartilhar('twitter')">
-                            <i class="bi bi-twitter"></i>
-                        </button>
-                        <button class="botao-de-acao" onclick="compartilhar('whatsapp')">
-                            <i class="bi bi-whatsapp"></i>
-                        </button>
+                    <!-- Rodapé com ações -->
+                    <div class="border-top pt-4 mt-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                Publicado pelo <strong>Amparo Animal</strong>
+                            </small>
+                            <div class="d-flex gap-2">
+                                <small class="text-muted">Compartilhar:</small>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-primary" onclick="compartilhar('facebook')"
+                                        title="Compartilhar no Facebook">
+                                        <i class="bi bi-facebook"></i>
+                                    </button>
+                                    <button class="btn btn-outline-info" onclick="compartilhar('twitter')"
+                                        title="Compartilhar no Twitter">
+                                        <i class="bi bi-twitter"></i>
+                                    </button>
+                                    <button class="btn btn-outline-success" onclick="compartilhar('whatsapp')"
+                                        title="Compartilhar no WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="ver-noticia.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/ver-noticia.js"></script>
 </body>
 
 </html>

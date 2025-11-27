@@ -695,7 +695,7 @@ body {
 }
 
 .footer h4 {
-    color: var(--accent);
+    color: var(--primary);
     margin-bottom: 1rem;
 }
 
@@ -723,7 +723,7 @@ body {
     padding-top: 20px;
     margin-top: 20px;
     text-align: center;
-    color: var(--muted-foreground);
+    color: var(--primary-foreground);
 }
 
 .modal-content {

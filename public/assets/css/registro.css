@@ -1,0 +1,86 @@
+/* ----------------------------------------------------------------- */
+/* Estilos da Página de Registro (Seletor de Tipo)
+/* ----------------------------------------------------------------- */
+.form-type-toggle {
+  display: flex;
+  background-color: var(--muted);
+  border-radius: var(--radius);
+  padding: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-type-toggle input[type="radio"] {
+  display: none; /* Esconde o radio button real */
+}
+
+.form-type-toggle label {
+  flex: 1; /* Faz as duas labels ocuparem metade do espaço */
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilo da "aba" selecionada */
+.form-type-toggle input[type="radio"]:checked + label {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-sm);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.registro-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.registro-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 1rem;
+}
+
+.registro-container .card {
+  background-color: var(--card);
+  border-color: var(--border);
+  border-radius: var(--radius);
+}
+
+.registro-container .title {
+  margin-bottom: 4rem;
+}
+
+.registro-container .title h4 {
+  color: var(--primary);
+}
+
+.registro-container .btn-registrar {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  font-weight: 600;
+}
+
+.registro-container .btn-registrar:hover {
+  filter: brightness(0.95);
+}
+
+.registro-container .form-control {
+  background-color: var(--background);
+  border-color: var(--input);
+}
+.registro-container .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(239, 136, 103, 0.25);
+}
