@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const url = "http://localhost:3001/noticias";
-  //const url = "https://5969dde0-d758-4518-bb60-6711b431a1df-00-122a0m2a0fibs.janeway.replit.dev/noticias";
 
   const viewLista = document.getElementById("view-lista");
   const viewFormulario = document.getElementById("view-formulario");
@@ -29,40 +28,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let noticias = [];
 
-  // Buscar notícias
-
-
   // =============================================
   // SISTEMA DE PERMISSÕES
   // =============================================
-
-
   const Permissoes = {
-    // Verificar se usuário atual é admin
     isAdmin() {
       const userId = localStorage.getItem("LOGGED_USER_ID");
       if (!userId) return false;
-
-      // Em produção, você faria uma requisição para buscar o usuário
-      // Por enquanto, vamos verificar por email (solução temporária)
       const userEmail = localStorage.getItem("LOGGED_USER_EMAIL");
-      return userEmail === "eduardo.machado@sga.pucminas.br"; // Email do admin
+      return userEmail === "eduardo.machado@sga.pucminas.br";
     },
 
-    // Mostrar/ocultar elementos baseado na permissão
     aplicarPermissoes() {
       const isAdmin = this.isAdmin();
-
-      // Botão "Nova Notícia"
       const botaoNovaNoticia = document.getElementById("botao-nova-noticia");
       if (botaoNovaNoticia) {
         botaoNovaNoticia.style.display = isAdmin ? "flex" : "none";
       }
-
-      // Botões de ação nos cards (serão tratados na renderização)
       console.log("Permissões aplicadas - Admin:", isAdmin);
       return isAdmin;
     },
+  };
+
+  // =============================================
+  // SISTEMA DE VISUALIZAÇÕES
+  // =============================================
+  const incrementarVisualizacoes = async (noticiaId) => {
+    try {
+      const response = await fetch(`${url}/${noticiaId}`);
+      if (!response.ok) throw new Error("Erro ao buscar notícia");
+
+      const noticia = await response.json();
+      const visualizacoesAtuais = parseInt(noticia.visualizacoes) || 0;
+      const novasVisualizacoes = visualizacoesAtuais + 1;
+
+      const updateResponse = await fetch(`${url}/${noticiaId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+        body: JSON.stringify({
+          ...noticia,
+          visualizacoes: novasVisualizacoes
+        })
+      });
+
+      if (!updateResponse.ok) throw new Error("Erro ao atualizar visualizações");
+      await buscarNoticias();
+      return novasVisualizacoes;
+
+    } catch (error) {
+      console.error("Erro ao incrementar visualizações:", error);
+      return null;
+    }
+  };
+
+  const configurarControleVisualizacoes = () => {
+    const inputVisualizacoes = document.getElementById("visualizacoes-input");
+    const botaoAumentar = document.getElementById("botao-aumentar-visualizacoes");
+    const botaoDiminuir = document.getElementById("botao-diminuir-visualizacoes");
+
+    if (!inputVisualizacoes || !botaoAumentar || !botaoDiminuir) return;
+
+    botaoAumentar.addEventListener("click", () => {
+      const valorAtual = parseInt(inputVisualizacoes.value) || 0;
+      inputVisualizacoes.value = valorAtual + 1;
+      infoVisualizacoes.textContent = inputVisualizacoes.value;
+    });
+
+    botaoDiminuir.addEventListener("click", () => {
+      const valorAtual = parseInt(inputVisualizacoes.value) || 0;
+      if (valorAtual > 0) {
+        inputVisualizacoes.value = valorAtual - 1;
+        infoVisualizacoes.textContent = inputVisualizacoes.value;
+      }
+    });
+
+    inputVisualizacoes.addEventListener("change", () => {
+      const valor = parseInt(inputVisualizacoes.value) || 0;
+      if (valor < 0) inputVisualizacoes.value = 0;
+      infoVisualizacoes.textContent = inputVisualizacoes.value;
+    });
+  };
+
+  const configurarContadorVisualizacoes = () => {
+    listaDeNoticias.addEventListener("click", async (event) => {
+      const botaoVer = event.target.closest(".botao-ver");
+      if (botaoVer) {
+        const id = botaoVer.dataset.id;
+        await incrementarVisualizacoes(id);
+        window.location.href = `ver-noticia.html?id=${id}`;
+      }
+    });
   };
 
   // Alterna entre lista e formulário
@@ -78,54 +133,44 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // --- CRUD ---
-
-  // Buscar notícias
-  // Buscar notícias - VERSÃO SIMPLIFICADA
-  // Buscar notícias - SEM LOADING
   const buscarNoticias = async () => {
     console.log('🔍 Carregando notícias...');
 
     try {
-      // REMOVER a parte do loading spinner
-      // listaDeNoticias.innerHTML = `<div class="text-center py-5">...</div>`;
-
       const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
       noticias = await response.json();
+      noticias = noticias.map(noticia => ({
+        ...noticia,
+        visualizacoes: noticia.visualizacoes || 0
+      }));
+
       noticias.sort((a, b) => Number(a.id) - Number(b.id));
       apresentarNoticias();
-
       console.log(`✅ ${noticias.length} notícias carregadas`);
 
     } catch (error) {
       console.error('❌ ERRO:', error);
       listaDeNoticias.innerHTML = `
-            <div class="alert alert-danger text-center">
-                <i class="bi bi-exclamation-triangle me-2"></i>
-                Erro ao carregar notícias!
-            </div>
-        `;
+        <div class="alert alert-danger text-center">
+          <i class="bi bi-exclamation-triangle me-2"></i>
+          Erro ao carregar notícias!
+        </div>`;
     }
   };
 
-  // Criar notícia (ID numérico)
   const enviarNoticia = async (noticia) => {
     try {
-      const maiorId = noticias.reduce(
-        (max, n) => Math.max(max, Number(n.id)),
-        0
-      );
-      noticia.id = String(maiorId + 1); // força ID string
+      const maiorId = noticias.reduce((max, n) => Math.max(max, Number(n.id)), 0);
+      noticia.id = String(maiorId + 1);
 
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=UTF-8" },
         body: JSON.stringify(noticia),
       });
+
       if (!response.ok) throw new Error("Erro ao enviar notícia");
       await buscarNoticias();
       mostrarView("lista");
@@ -136,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Atualizar notícia
   const atualizarNoticia = async (id, noticia) => {
     try {
       const response = await fetch(`${url}/${Number(id)}`, {
@@ -144,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json; charset=UTF-8" },
         body: JSON.stringify(noticia),
       });
+
       if (!response.ok) throw new Error("Erro ao atualizar");
       await buscarNoticias();
       mostrarView("lista");
@@ -154,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Excluir notícia (corrigido)
   const excluirNoticia = async (id) => {
     try {
       const response = await fetch(`${url}/${id}`, { method: "DELETE" });
@@ -168,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // --- Renderização ---
   // --- Renderização ---
   const apresentarNoticias = () => {
     console.log('🎨 INICIANDO RENDERIZAÇÃO...');
@@ -186,34 +229,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const isAdmin = Permissoes.isAdmin();
     console.log('👤 Permissões - Admin:', isAdmin);
 
-    noticias.forEach((noticia, index) => {
+    noticias.forEach((noticia) => {
       const cartao = document.createElement('div');
       cartao.className = 'cartao-noticia';
+      const visualizacoes = noticia.visualizacoes || 0;
 
-      // 🎯 BOTÕES CONDICIONAIS - só mostra editar/excluir se for admin
       const botoesAcao = isAdmin ? `
-            <button type="button" class="botao-de-acao botao-editar" data-id="${noticia.id}">
-                <i class="bi bi-pencil me-1"></i>Editar
-            </button>
-            <button type="button" class="botao-de-acao botao-excluir" data-id="${noticia.id}">
-                <i class="bi bi-trash me-1"></i>Excluir
-            </button>
-        ` : '';
+        <button type="button" class="botao-de-acao botao-editar" data-id="${noticia.id}">
+          <i class="bi bi-pencil me-1"></i>Editar
+        </button>
+        <button type="button" class="botao-de-acao botao-excluir" data-id="${noticia.id}">
+          <i class="bi bi-trash me-1"></i>Excluir
+        </button>
+      ` : '';
 
       cartao.innerHTML = `
-            <img src="${noticia.imagemUrl}" alt="${noticia.titulo}" 
-                 loading="lazy"
-                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBlOWUwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzZkNGM0MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlNlbSBJbWFnZW08L3RleHQ+PC9zdmc+'">
-            <div class="cartao-noticia-conteudo">
-                <h3>${noticia.titulo}</h3>
-                <p>${noticia.descricaoCurta}</p>
-                <div class="cartao-noticia-acoes">
-                    <button type="button" class="botao-de-acao botao-ver" data-id="${noticia.id}">
-                        <i class="bi bi-eye me-1"></i>Ver Notícia
-                    </button>
-                    ${botoesAcao}
-                </div>
-            </div>`;
+        <img src="${noticia.imagemUrl}" alt="${noticia.titulo}" 
+             loading="lazy"
+             onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBlOWUwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzZkNGM0MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlNlbSBJbWFnZW08L3RleHQ+PC9zdmc+'">
+        <div class="cartao-noticia-conteudo">
+          <h3>${noticia.titulo}</h3>
+          <p>${noticia.descricaoCurta}</p>
+          <div class="cartao-noticia-metadados">
+            <span class="badge bg-secondary">
+              <i class="bi bi-eye me-1"></i>${visualizacoes} visualizações
+            </span>
+          </div>
+          <div class="cartao-noticia-acoes">
+            <button type="button" class="botao-de-acao botao-ver" data-id="${noticia.id}">
+              <i class="bi bi-eye me-1"></i>Ver Notícia
+            </button>
+            ${botoesAcao}
+          </div>
+        </div>`;
       listaDeNoticias.appendChild(cartao);
     });
 
@@ -231,7 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
     botaoNovoForm.style.display = "none";
     imagemPreview.src = "https://via.placeholder.com/300x200?text=Sem+Imagem";
     infoStatus.textContent = "--";
-    infoVisualizacoes.textContent = "--";
+
+    const inputVisualizacoes = document.getElementById("visualizacoes-input");
+    if (inputVisualizacoes) {
+      inputVisualizacoes.value = "0";
+    }
+    infoVisualizacoes.textContent = "0";
+
     infoDataCriacao.textContent = "--";
   };
 
@@ -241,11 +295,15 @@ document.addEventListener("DOMContentLoaded", () => {
     campoImagemUrl.value = noticia.imagemUrl;
     campoDescricaoCurta.value = noticia.descricaoCurta;
     campoNoticiaCompleta.value = noticia.noticiaCompleta;
-    imagemPreview.src =
-      noticia.imagemUrl ||
-      "https://via.placeholder.com/300x200?text=Sem+Imagem";
+    imagemPreview.src = noticia.imagemUrl || "https://via.placeholder.com/300x200?text=Sem+Imagem";
     infoStatus.textContent = noticia.status || "--";
-    infoVisualizacoes.textContent = noticia.visualizacoes || "--";
+
+    const inputVisualizacoes = document.getElementById("visualizacoes-input");
+    if (inputVisualizacoes) {
+      inputVisualizacoes.value = noticia.visualizacoes || 0;
+    }
+    infoVisualizacoes.textContent = noticia.visualizacoes || "0";
+
     infoDataCriacao.textContent = noticia.dataCriacao || "--";
     tituloFormulario.textContent = `Editar Notícia (ID: ${noticia.id})`;
     botaoSalvar.textContent = "Salvar Alterações";
@@ -266,22 +324,18 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     const id = campoIdDaNoticia.value;
+    const inputVisualizacoes = document.getElementById("visualizacoes-input");
 
     const noticia = {
       titulo: campoTitulo.value,
       imagemUrl: campoImagemUrl.value,
       descricaoCurta: campoDescricaoCurta.value,
       noticiaCompleta: campoNoticiaCompleta.value,
-      status:
-        infoStatus.textContent === "--" ? "Rascunho" : infoStatus.textContent,
-      visualizacoes:
-        infoVisualizacoes.textContent === "--"
-          ? "0"
-          : infoVisualizacoes.textContent,
-      dataCriacao:
-        infoDataCriacao.textContent === "--"
-          ? new Date().toLocaleDateString("pt-BR")
-          : infoDataCriacao.textContent,
+      status: infoStatus.textContent === "--" ? "Rascunho" : infoStatus.textContent,
+      visualizacoes: inputVisualizacoes ? parseInt(inputVisualizacoes.value) || 0 : 0,
+      dataCriacao: infoDataCriacao.textContent === "--"
+        ? new Date().toLocaleDateString("pt-BR")
+        : infoDataCriacao.textContent,
     };
 
     if (id) {
@@ -333,10 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   botaoExcluirForm.addEventListener("click", async () => {
     const idParaExcluir = Number(campoIdDaNoticia.value);
-    if (
-      idParaExcluir &&
-      confirm("Tem certeza que deseja EXCLUIR esta notícia PERMANENTEMENTE?")
-    ) {
+    if (idParaExcluir && confirm("Tem certeza que deseja EXCLUIR esta notícia PERMANENTEMENTE?")) {
       await excluirNoticia(idParaExcluir);
       alert("Notícia excluída com sucesso!");
     }
@@ -350,5 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicialização
   mostrarView("lista");
   buscarNoticias();
-  Permissoes.aplicarPermissoes(); // 🆕 APLICAR PERMISSÕES
+  Permissoes.aplicarPermissoes();
+  configurarControleVisualizacoes();
+  configurarContadorVisualizacoes();
 });

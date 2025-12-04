@@ -1,33 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="light">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - Teste de Header</title>
+  <title>Amparo Animal</title>
   <link rel="icon" type="image/png" href="assets/images/paw.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/estilo-landing-page.css" />
 </head>
 
 <body>
   <div id="header-placeholder"></div>
-  <div class="d-flex flex-column">
-    <main class="flex-grow-1 p-3 max-width-1280 mx-auto">
-      <h1>Página Inicial de Teste</h1>
-      <p class="lead">
-        Esta é a página principal. O header acima deve mudar dependendo do seu
-        estado de login.
-      </p>
-    </main>
+  <section id="inicio" class="hero-carrossel-section">
+    <div class="hero-carrossel">
+      <div class="carrossel-container-dragfree" id="hero-carrossel"></div>
+      <button class="carrossel-controle carrossel-prev" id="hero-prev">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button class="carrossel-controle carrossel-next" id="hero-next">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+      <div class="carrossel-indicadores" id="hero-indicadores"></div>
+    </div>
+  </section>
+
+  <!-- Animais para Apadrinhar -->
+  <section id="apadrinhar" class="animais-section">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Animais que Precisam de Você</h2>
+        <p class="section-subtitle">Apadrinhe um animal e transforme sua vida</p>
+      </div>
+
+      <div class="carrossel-animais">
+        <div class="carrossel-container" id="carrossel-animais-container"></div>
+        <button class="carrossel-controle carrossel-prev" id="animais-prev">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carrossel-controle carrossel-next" id="animais-next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Planos de Apadrinhamento -->
+      <div class="planos-section mt-5">
+        <h3 class="text-center mb-4">Escolha seu Plano de Apadrinhamento</h3>
+        <div class="row" id="planos-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carrossel de Notícias -->
+  <section id="noticias" class="noticias-section">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Últimas Notícias</h2>
+        <p class="section-subtitle">Fique por dentro do mundo animal</p>
+      </div>
+
+      <div class="carrossel-noticias">
+        <div class="carrossel-container" id="carrossel-noticias-container"></div>
+        <button class="carrossel-controle carrossel-prev" id="noticias-prev">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carrossel-controle carrossel-next" id="noticias-next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Itens para Doação -->
+  <section id="doacoes" class="doacoes-section">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Itens para Doação</h2>
+        <p class="section-subtitle">Doe itens que podem fazer a diferença</p>
+      </div>
+
+      <div class="row" id="itens-container"></div>
+    </div>
+  </section>
+
+  <!-- Comunidade - Posts de Adotantes -->
+  <section id="comunidade" class="comunidade-section">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Nossa Comunidade</h2>
+        <p class="section-subtitle">Histórias reais de adoção e amor</p>
+      </div>
+
+      <div class="row" id="posts-container"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-4">
+          <h3>Amparo Animal</h3>
+          <p>Conectando pessoas e animais desde 2025.</p>
+        </div>
+        <div class="col-lg-4">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#apadrinhar">Apadrinhar</a></li>
+            <li><a href="noticia.html">Notícias</a></li>
+            <li><a href="#doacoes">Doações</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h4>Contato</h4>
+          <p>Email: contato@amparoanimal.org</p>
+          <p>Telefone: (11) 9999-9999</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Amparo Animal. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Login -->
+  <div class="modal fade" id="modalLogin" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Entrar no Amparo Animal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-login">
+            <div class="mb-3">
+              <label for="login-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="login-email" required>
+            </div>
+            <div class="mb-3">
+              <label for="login-senha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="login-senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Modal Cadastro -->
+  <div class="modal fade" id="modalCadastro" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastrar no Amparo Animal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-cadastro">
+            <div class="mb-3">
+              <label for="cadastro-nome" class="form-label">Nome Completo</label>
+              <input type="text" class="form-control" id="cadastro-nome" required>
+            </div>
+            <div class="mb-3">
+              <label for="cadastro-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="cadastro-email" required>
+            </div>
+            <div class="mb-3">
+              <label for="cadastro-senha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="cadastro-senha" required>
+            </div>
+            <div class="mb-3">
+              <label for="cadastro-telefone" class="form-label">Telefone</label>
+              <input type="tel" class="form-control" id="cadastro-telefone">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/header.js"></script>
+  <script type="module" src="assets/js/landing page.js"></script>
+
 </body>
 
 </html>

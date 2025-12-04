@@ -1,5 +1,6 @@
+import { API_URL } from './utils.js';
+
 document.addEventListener('DOMContentLoaded', function () {
-    const API_URL = 'http://localhost:3001';
 
     const elementos = {
         heroCarrossel: document.getElementById('hero-carrossel'),

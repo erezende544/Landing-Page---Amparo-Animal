@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Teste de Header</title>
+    <title>Amparo Animal | Notícias</title>
     <link rel="icon" type="image/png" href="assets/images/paw.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,10 +53,6 @@
                                     <input type="text" id="imagemUrl" placeholder="https://" />
                                 </div>
 
-                                <div class="preview-imagem">
-                                    <img id="imagem-preview" src="https://via.placeholder.com/300x200?text=Sem+Imagem">
-                                </div>
-
                                 <div class="grupo-formulario">
                                     <label for="titulo">Título:</label>
                                     <input type="text" id="titulo" placeholder="Título da notícia" required />
@@ -80,7 +76,27 @@
                                 <div class="painel-informacoes">
                                     <h3>Informações:</h3>
                                     <p><strong>Status:</strong> <span id="info-status">--</span></p>
-                                    <p><strong>Visualizações:</strong> <span id="info-visualizacoes">--</span></p>
+
+                                    <!-- CAMPO DE VISUALIZAÇÕES ATUALIZADO -->
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Visualizações:</label>
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                id="botao-diminuir-visualizacoes">
+                                                <i class="bi bi-dash"></i>
+                                            </button>
+                                            <input type="number" class="form-control text-center"
+                                                id="visualizacoes-input" min="0" value="0" style="max-width: 100px;">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                id="botao-aumentar-visualizacoes">
+                                                <i class="bi bi-plus"></i>
+                                            </button>
+                                            <span class="ms-2 fw-bold" id="info-visualizacoes">0</span>
+                                        </div>
+                                        <small class="text-muted d-block">Controle manual: use os botões + e - ou
+                                            digite</small>
+                                    </div>
+
                                     <p><strong>Data de Criação:</strong> <span id="info-data-criacao">--</span></p>
                                 </div>
 

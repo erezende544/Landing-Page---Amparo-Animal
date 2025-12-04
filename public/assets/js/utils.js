@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001";
+export const API_URL = "https://api-amparo-animal.azurewebsites.net/";
 
 function maskCNPJ(event) {
   let value = event.target.value;

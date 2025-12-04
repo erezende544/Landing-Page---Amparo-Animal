@@ -21,15 +21,35 @@
       "senha": "#@123teste"
     }
   ],
+  "apadrinhamentos": [
+    {
+      "usuarioId": "1",
+      "animalId": 1,
+      "planoId": 1,
+      "cartoesCadastradoId": 1,
+      "dataInicio": "2025-11-16",
+      "status": "CANCELADO",
+      "id": "1"
+    },
+    {
+      "usuarioId": "1",
+      "animalId": 2,
+      "planoId": 2,
+      "cartoesCadastradoId": 1,
+      "dataInicio": "2025-11-16",
+      "status": "ATIVO",
+      "id": "2"
+    }
+  ],
   "cartoesCadastrados": [
     {
-      "id": "1",
-      "usuarioId": 101,
-      "alias": "Visa Pessoal",
-      "numeroCartao": "1234 5678 9012 3456",
-      "nomeTitular": "ANA C SILVA",
-      "validade": "12/28",
-      "cvv": "123"
+      "usuarioId": "1",
+      "alias": "Cartão final 1231",
+      "numeroCartao": "1231231231231231",
+      "nomeTitular": "Vitor M",
+      "validade": "12/31",
+      "cvv": "123",
+      "id": "1"
     }
   ],
   "planos": [
@@ -66,33 +86,101 @@
         "Receba atualizações periódicas"
       ]
     }
-    
-    
   ],
   "animais": [
     {
       "id": "1",
       "nome": "Mel",
-      "idade": "Filhote",
+      "idade": "Adulto",
       "especie": "Cachorro",
       "raca": "Vira-lata",
       "sexo": "Fêmea",
-      "foto": "https://res.cloudinary.com/dw5enojvx/image/upload/v1763304967/8600395_q3tln6.jpg",
+      "foto": "https://images.dog.ceo/breeds/cockapoo/george-tongue.jpg",
       "empresasId": 1,
-      "descricao": "Filhote dócil,gosta de brincar."
+      "descricao": "Mel é uma cachorrinha carinhosa e brincalhona que adora estar perto de pessoas. Ela se dá bem com outros animais e está procurando um lar amoroso onde possa receber muita atenção e cuidados."
+    },
+    {
+      "id": "2",
+      "nome": "Thor",
+      "idade": "Filhote",
+      "especie": "Cachorro",
+      "raca": "Spitz Japonês",
+      "sexo": "Macho",
+      "foto": "https://images.dog.ceo/breeds/spitz-japanese/beet-004.jpg",
+      "empresasId": 1,
+      "descricao": "Thor é um filhote enérgico e curioso que adora explorar o mundo ao seu redor. Ele está cheio de vida e procura uma família ativa que possa acompanhá-lo em suas aventuras diárias."
+    },
+    {
+      "id": "3",
+      "nome": "Luna",
+      "idade": "Sênior",
+      "especie": "Gato",
+      "raca": "Siamês",
+      "sexo": "Fêmea",
+      "foto": "https://cdn2.thecatapi.com/images/ai6.jpg",
+      "empresasId": 1,
+      "descricao": "Luna é uma gata sênior tranquila e afetuosa que adora passar o tempo descansando em lugares aconchegantes. Ela procura um lar calmo onde possa receber muito amor e atenção."
+    },
+    {
+      "id": "4",
+      "nome": "Buddy",
+      "idade": "Adulto",
+      "especie": "Cachorro",
+      "raca": "Speniel Blenheim",
+      "sexo": "Macho",
+      "foto": "https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_2955.jpg",
+      "empresasId": 1,
+      "descricao": "Buddy é um Speniel Blenheim amigável e leal que adora brincar ao ar livre. Ele é ótimo com crianças e outros animais, e está procurando uma família que possa lhe dar muito amor e atenção."
     }
   ],
   "empresas": [
     {
       "id": "1",
-      "cnpj": "00.000.000/0001-00",
-      "razaoSocial": "Empresa Exemplo",
-      "nomeFantasia": "Exemplo Ltda",
-      "inscricaoEstadual": "123456789",
-      "inscricaoMunicipal": "987654321",
-      "endereco": "Rua Exemplo, 123",
-      "contato": "(11) 1234-5678",
-      "email": "exemplo@gmail.com"
+      "cnpj": "72.391.845/0001-62",
+      "razaoSocial": "Matilha Real Hotel e Creche para cães",
+      "nomeFantasia": "Matilha Real",
+      "inscricaoEstadual": "246.918.237.114",
+      "inscricaoMunicipal": "58.392.177",
+      "endereco": "Rua Catete, 640, Alto Barroca Belo Horizonte - MG",
+      "CEP": "30431-016",
+      "contato": "(31) 2513-0818 | (31) 99583-0818",
+      "email": "matilhareal@gmail.com"
+    },
+    {
+      "id": "2",
+      "cnpj": "04.983.712/0001-05",
+      "razaoSocial": "Consultório Veterinário Cães e Amigos",
+      "nomeFantasia": "Cães e Amigos",
+      "inscricaoEstadual": "317.841.902.557",
+      "inscricaoMunicipal": "12.940.668",
+      "endereco": "R. Padre Silveira Lôbo, 487 - Aeroporto, Belo Horizonte - MG",
+      "CEP": "31270-740",
+      "contato": "(31) 3441-5656",
+      "email": "caeseamigos@gmail.com"
+    },
+    {
+      "id": "3",
+      "cnpj": "89.102.467/0001-90",
+      "razaoSocial": "Instituto Adimax",
+      "nomeFantasia": "Adimax Rações",
+      "inscricaoEstadual": "198.554.031.229",
+      "inscricaoMunicipal": "93.115.402",
+      "endereco": "Av. José Carlos Costa, 300 - Liberdade, Ribeirão das Neves - MG",
+      "CEP": "33822-722",
+      "contato": "(31) 99509-7160",
+      "email": "adimax@gmail.com"
+    },
+    {
+      "id": "4",
+      "cnpj": "56.740.913/0001-44",
+      "razaoSocial": "Associação Cão Viver",
+      "nomeFantasia": "Cão Viver",
+      "inscricaoEstadual": "402.731.998.641",
+      "inscricaoMunicipal": "77.228.014",
+      "endereco": "Rua Primeiro de Maio, 165, Bairro Vila Boa Vista, Contagem - MG",
+      "CEP": "32.186-429",
+      "contato": "(31) 99166-8563",
+      "email": "caoviverbh@gmail.com"
     }
   ],
   "itens": [
@@ -148,7 +236,7 @@
       "descricaoCurta": "Com o retorno presencial ao trabalho, muitos cães desenvolvem comportamentos destrutivos e ansiosos. Especialistas explicam como facilitar essa transição.",
       "noticiaCompleta": "A pandemia nos deixou um legado inesperado: cães acostumados com a presença constante de seus tutores. Agora, com o retorno às rotinas presenciais, clínicas veterinárias reportam um aumento de 60% em casos de ansiedade de separação.\n\nSinais de alerta:\n•\tLatidos excessivos quando sozinho\n•\tComportamentos destrutivos (morder móveis, portas)\n•\tFazer necessidades em locais inadequados\n•\tLambedura compulsiva das patas\n\nEstratégias de adaptação:\n•\tComece com ausências curtas (5-10 minutos) e aumente gradualmente\n•\tCrie um ambiente seguro e confortável (cama, brinquedos)\n•\tUse enriquecimento ambiental (brinquedos interativos com comida)\n•\tEvite dramas na saída e chegada - mantenha a calma\n•\tConsidere ajuda profissional se os sintomas persistirem\n\n\"O segredo está na dessensibilização gradual\", recomenda a comportamentalista canina Ana Costa. \"Não devemos voltar ao trabalho de um dia para o outro e deixar o cão sozinho por 8 horas direto.\"",
       "status": "Publicado",
-      "visualizacoes": "0",
+      "visualizacoes": 1,
       "dataCriacao": "25/10/2025"
     },
     {
@@ -158,7 +246,7 @@
       "descricaoCurta": "Conheça os cuidados específicos de saúde, exercício e nutrição necessários para manter seu Pastor Alemão saudável e feliz por muitos anos.",
       "noticiaCompleta": "O Pastor Alemão é uma das raças mais populares e versáteis do mundo, conhecida por sua lealdade, inteligência e capacidade de trabalho. No entanto, essa raça requer cuidados específicos para prevenir problemas comuns.\n\nCuidados Essenciais:\n•\tExercício: Necessitam de pelo menos 2 horas de atividade física diária\n•\tAlimentação: Rações específicas para raças grandes para evitar problemas ósseos\n•\tTreinamento: Excelente capacidade de aprendizado, respondem bem ao reforço positivo\nSaúde Preventiva:\n•\tDisplasia coxofemoral - exames regulares a partir dos 12 meses\n•\tProblemas digestivos - alimentação em porções controladas\n•\tDermatites - escovação regular da dupla pelagem\n\"O Pastor Alemão é um cão de trabalho que precisa de estímulo físico e mental constante\", explica o veterinário Dr. Carlos Albuquerque. \"Sem isso, podem desenvolver comportamentos destrutivos por tédio.\"",
       "status": "Publicado",
-      "visualizacoes": "0",
+      "visualizacoes": 32,
       "dataCriacao": "25/10/2025"
     },
     {
@@ -168,7 +256,7 @@
       "descricaoCurta": "Descubra os melhores brinquedos interativos que mantêm seu cão mentalmente estimulado e previnem a ansiedade de separação.",
       "noticiaCompleta": "Manter seu cão entretido quando está sozinho é essencial para seu bem-estar mental e para a preservação da sua casa! Conheça os brinquedos mais eficazes:\n\n1. Kong Classic - O Clássico Atemporal\n•\tPreencha com petiscos e pasta de amendoim (sem açúcar)\n•\tDurabilidade excelente para mordedores vigorosos\n•\tDisponível em vários tamanhos\n\n2. Quebra-Cabeça Nina Ottosson\n•\tNíveis de dificuldade progressivos\n•\tEstimula o raciocínio lógico\n•\tPerfeito para cães inteligentes e curiosos\n\n3. Bola Dispensadora de Petiscos\n•\tCombine exercício físico e mental\n•\tRegulável para diferentes tamanhos de petiscos\n•\tGrande sucesso entre retrievers\n\nDica importante: Rotacione os brinquedos semanalmente para manter o interesse do seu cão!",
       "status": "Publicado",
-      "visualizacoes": "0",
+      "visualizacoes": 25,
       "dataCriacao": "25/10/2025"
     },
     {
@@ -178,7 +266,7 @@
       "descricaoCurta": "Muitos alimentos comuns em nossas casas representam perigo real para os cães. Conheça a lista completa do que evitar.",
       "noticiaCompleta": "ALERTA DE SAÚDE CANINA\nAlguns alimentos que consumimos regularmente podem ser tóxicos e até fatais para nossos amigos de quatro patas.\n\nLista de Alimentos Perigosos:\n1.\tChocolate - Teobromina pode causar convulsões\n2.\tUvas e uvas-passas - Insuficiência renal aguda\n3.\tCebola e alho - Anemia hemolítica\n4.\tCafé - Estimulante cardíaco perigoso\n5.\tAbacate - Persina causa problemas digestivos\n6.\tNoz-macadâmia - Toxina desconhecida afeta sistema nervoso\n7.\tXilitol (adoçante) - Insuficiência hepática\n8.\tOssos cozidos - Estilhaçam e perfuram intestinos\n9.\tÁlcool - Intoxicação grave\n10.\tMassas cruas - Fermentação no estômago\n\n\"Sinais de intoxicação incluem vômitos, diarréia, tremores e dificuldade respiratória\", alerta a veterinária Dra. Fernanda Costa. \"Em caso de suspeita, procure atendimento imediatamente.\"\n\n",
       "status": "Publicado",
-      "visualizacoes": "0",
+      "visualizacoes": 2,
       "dataCriacao": "25/10/2025"
     }
   ]

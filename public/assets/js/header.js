@@ -1,11 +1,6 @@
-/**
- * Carrega o header dinâmico em todas as páginas.
- * Este script deve ser carregado DEPOIS de 'auth.js'
- */
 function loadHeader() {
-  // 1. Pega os dados da "sessão" do localStorage
   const userName = localStorage.getItem("LOGGED_USER_NAME");
-  const userEmail = localStorage.getItem("LOGGED_USER_EMAIL"); // <-- NOVO
+  const userEmail = localStorage.getItem("LOGGED_USER_EMAIL");
   const placeholder = document.getElementById("header-placeholder");
 
   if (!placeholder) {
@@ -16,8 +11,6 @@ function loadHeader() {
   let userMenuHTML = "";
 
   if (userName && userEmail) {
-    // --- USUÁRIO ESTÁ LOGADO (Modern UI) ---
-    // (Usa o nome e email salvos durante o login)
     userMenuHTML = `
       <li class="nav-item dropdown">
         <a
@@ -52,16 +45,13 @@ function loadHeader() {
         </ul>
       </li>
     `;
+
   } else {
-    // --- USUÁRIO ESTÁ DESLOGADO ---
-    // (Botões de Login e Registrar)
     userMenuHTML = `
     <a class="btn me-2" href="login.html">Login</a>
     `;
   }
 
-  // 2. Monta o HTML completo do header
-  // (Ajuste os links de navegação conforme sua necessidade)
   const headerHTML = `
     <nav class="navbar navbar-expand-lg">
       <div
@@ -86,7 +76,7 @@ function loadHeader() {
               <a class="nav-link" href="#">Postagens de adotantes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Administração de ONGs</a>
+              <a class="nav-link" href="cadastro-empresas.html">Administração de ONGs</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto">
